@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Una Pokédex moderna para explorar los 151 Pokémon originales de Kanto.">
+  <title>Pokédex Kanto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Pokédex Kanto, inicio">
+      <span class="pokeball-logo" aria-hidden="true"></span>
+      <span>Pokédex <span class="brand-light">Kanto</span></span>
+    </a>
+    <span class="region-pill">Región #001–151</span>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">TU AVENTURA COMIENZA AQUÍ</p>
+        <h1>Descubre tu próximo <span>Pokémon.</span></h1>
+        <p class="hero-description">Explora los 151 Pokémon originales, conoce sus datos y crea tu propia colección.</p>
+      </div>
+      <div class="hero-ball" aria-hidden="true"><span></span></div>
+    </section>
+
+    <section class="controls" aria-label="Buscar Pokémon">
+      <label class="search-box">
+        <span aria-hidden="true">⌕</span>
+        <input id="searchInput" type="search" placeholder="Busca por nombre o número..." autocomplete="off">
+        <kbd>/</kbd>
+      </label>
+      <label class="filter-label">
+        <span class="sr-only">Filtrar por tipo</span>
+        <select id="typeFilter">
+          <option value="all">Todos los tipos</option>
+        </select>
+      </label>
+      <div class="view-switch" role="group" aria-label="Filtrar colección">
+        <button class="view-button active" data-view="all">Todos</button>
+        <button class="view-button" data-view="favorites">♥ Favoritos</button>
+        <button class="view-button" data-view="caught">✓ Capturados</button>
+      </div>
+    </section>
+
+    <section class="collection-heading">
+      <div>
+        <h2>Pokémon de Kanto</h2>
+        <p id="resultsCount" aria-live="polite">Preparando la Pokédex...</p>
+      </div>
+      <div class="progress-wrap">
+        <span id="caughtProgress">0 / 151 capturados</span>
+        <div class="progress-track"><div id="progressBar"></div></div>
+      </div>
+    </section>
+
+    <div id="status" class="status" role="status">Cargando Pokémon... Esto puede tardar unos segundos.</div>
+    <section id="pokemonGrid" class="pokemon-grid" aria-label="Lista de Pokémon"></section>
+    <button id="loadMoreButton" class="load-more" hidden>Mostrar más Pokémon</button>
+    <div id="emptyState" class="empty-state" hidden>
+      <span>🔎</span>
+      <h3>No encontramos Pokémon</h3>
+      <p>Prueba con otro nombre o cambia los filtros.</p>
+      <button id="resetButton" class="primary-button">Limpiar filtros</button>
+    </div>
+  </main>
+
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+    <article class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalName">
+      <button class="modal-close" aria-label="Cerrar ficha" data-close-modal>×</button>
+      <div id="modalContent"></div>
+    </article>
+  </div>
+
+  <footer class="footer">
+    <span>Hecho con ♥ y JavaScript</span>
+    <span>Proyecto de práctica · Datos de PokéAPI</span>
+  </footer>
+</body>
+</html>
